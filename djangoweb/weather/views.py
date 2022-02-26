@@ -12,10 +12,13 @@ def home(request):
     r = requests.get(url)
     j = r.json()
 
-    url2 = 'http://api.openweathermap.org/data/2.5/forecast/onecall?q=Dallas&cnt=16&units=imperial&appid='+api_key
+    url2 = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=Dallas&cnt=16&units=imperial&appid='+api_key
     r2 = requests.get(url2)
     j2=r2.json()
     weekly_data = {}
+    print('before response')
+    print(j2)
+    print('after response')
     for entry in j2['list']:
         dt = datetime.datetime.fromtimestamp(entry['dt'])
         dt2 = dt.strftime('%a %m-%d')
