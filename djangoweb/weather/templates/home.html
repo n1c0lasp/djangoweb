@@ -1,6 +1,5 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,14 +11,43 @@
     Weather for Dallas, TX
 </h1>
 
-<table>
+<table class="table table-striped">
     <tr>
         <td>
-            Conditions:
+            Current Conditions:
         </td>
         <td>
             {{main}}
         </td>
+        <tr>
+            <td>
+                Day
+            </td>
+            <td>
+                High Temp
+            </td>
+            <td>
+                Low Temp
+            </td>
+            <td>
+                Conditions
+            </td>
+            <td>
+                Probability of Precip
+            </td>
+        </tr>
+        {% for key, values in min.items %}
+        <tr>
+            <td>
+                {{key}}
+            </td>
+            {% for r in values %}
+            <td>
+                {{r}}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
     </tr>
 
 </table>
