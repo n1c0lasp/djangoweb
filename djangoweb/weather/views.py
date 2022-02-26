@@ -3,14 +3,16 @@ from django.http import HttpResponse
 import requests
 import datetime
 import math
+global api_key
+api_key = '2d41c22ae78b3bd082fd3f0eda60e983'
 
 def home(request):
-    api_key = '2d41c22ae78b3bd082fd3f0eda60e983'
+
     url = 'http://api.openweathermap.org/data/2.5/weather?q=Dallas&appid='+api_key
     r = requests.get(url)
     j = r.json()
 
-    url2 = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=Dallas&cnt=16&units=imperial&appid='+api_key
+    url2 = 'http://api.openweathermap.org/data/2.5/forecast/onecall?q=Dallas&cnt=16&units=imperial&appid='+api_key
     r2 = requests.get(url2)
     j2=r2.json()
     weekly_data = {}
@@ -23,5 +25,25 @@ def home(request):
 
     context = {'main': j['weather'][0]['main'], 'min':weekly_data}
     return render(request, 'home.html', context)
+
+def detail(request):
+    url = 'https://api.openweathermap.org/data/2.5/onecall?lat=32.7767&lon=-96.7970&exclude=minutely&units=imperial&appid=' + api_key
+    print(url)
+    r = requests.get(url)
+    j = r.json()
+    #print(j)
+    data = {}
+    for entry in j['hourly']:
+        dt = datetime.datetime.fromtimestamp(entry['dt'])
+        print(dt)
+        dt2 = dt.strftime('%a %m-%d %H:00')
+        print(dt2)
+        data[dt2] = [entry['temp']]
+        print(entry['temp'])
+    context = {'temp':data}
+    print(context)
+
+
+    return render(request, 'detail.html', context)
 
 # Create your views here.

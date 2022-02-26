@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Detail</title>
+</head>
+<body>
+    <h1>
+        Weather for Dallas, TX
+    </h1>
+
+    <table class="table table-striped">
+        <tr>
+            <td>Date</td>
+            <td>Temp</td>
+        </tr>
+        {% for key, values in temp.items %}
+        <tr>
+            <td>
+            {{key}}
+            </td>
+        {% for r in values %}
+            <td>
+            {{r}}
+            </td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+</body>
+</html>
