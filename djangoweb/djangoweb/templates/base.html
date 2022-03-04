@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<style>
+    td {
+    border: 1px solid #000;
+}
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{% static 'css/main.css' %}">
+    <title>Base</title>
+</head>
+<body>
+<h1>
+    The following apps are available:
+</h1>
+  <a class = "btn btn-primary" href="/weather">Weather</a>
+</body>
+</html>

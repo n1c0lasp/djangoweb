@@ -54,7 +54,7 @@ ROOT_URLCONF = 'djangoweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'weather/templates/',],
+        'DIRS': [BASE_DIR / 'weather/templates/', BASE_DIR / "djangoweb/templates/",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
