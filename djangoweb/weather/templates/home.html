@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 {% load static %}
+<style>
+    td {
+    border: 1px solid #000;
+}
+
+tr td {
+    width: 1%;
+    white-space: nowrap;
+}
+
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +22,7 @@
     Weather for Dallas, TX
 </h1>
 
-<table class="table table-striped">
+<table style="max-width: 100%;" class="table-sm ">
     <tr>
         <td>
             Current Conditions:
